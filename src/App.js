@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import StaffRequest from "./Staff";
+
+const stafflist = [
+  {
+    id: 1,
+    name: "John",
+    position: "Developer",
+    request: "System reboot"
+  },
+  {
+    id: 2,
+    name: "Jane",
+    position: "Designer",
+    request: "Sick Leave",
+  },
+  {
+    id: 3,
+    name: "Tom",
+    position: "Manager",
+    request: "Vacation",
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Stream</h1>
+      { stafflist.map( s => <StaffRequest staff={s}/> ) }
     </div>
   );
 }
