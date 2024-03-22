@@ -37,7 +37,11 @@ function App() {
   return (
     <div>
       <header>
-      <h1><a href="#introduction" onClick={handleStreamClick}><img src={logo} alt="Stream Logo" />Stream</a></h1>
+      <h1><a href="#introduction" onClick={handleStreamClick} style={{ display: "flex", alignItems: "center"}}>
+        <img src={logo} alt="Stream logo" style={{ width: 30, marginRight: 10 }} />
+        Stream
+        </a>
+        </h1>
       {showIntroduction && (
         <h2 id="introduction">Work Flows</h2>
       )}
