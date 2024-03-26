@@ -1,6 +1,7 @@
 import StaffRequest from "./Staff";
 import { useState } from "react";
 import logo from './logo.jpg';
+import './App.css';
 
 const stafflist = [
   {
@@ -24,21 +25,26 @@ const stafflist = [
 ];
 
 function App() {
+  const [showLogo, setShowLogo] = useState(false);
   const [showIntroduction, setShowIntroduction] = useState(false);
   const [showStaffRequests, setShowStaffRequests] = useState(false);
+  const [showGetStarted, setShowGetStarted] = useState(false);
 
   const handleStreamClick = () => {
+    setShowLogo(true);
     setShowIntroduction(true);
+    setShowGetStarted(true);
   };
 
   const handleGetStartedClick = () => {
     setShowStaffRequests(true);
   };
+
   return (
     <div>
       <header>
       <h1><a href="#introduction" onClick={handleStreamClick} style={{ display: "flex", alignItems: "center"}}>
-        <img src={logo} alt="Stream logo" style={{ width: 30, marginRight: 10 }} />
+        { showLogo && <img src={logo} alt="Stream logo" style={{ width: 30, marginRight: 10 }} />}
         Stream
         </a>
         </h1>
@@ -46,7 +52,12 @@ function App() {
         <h2 id="introduction">Work Flows</h2>
       )}
       <p>Stream is a platform that allows you to manage your staff requests</p>
-        <button onClick={handleGetStartedClick}>Get Started</button>
+      {showGetStarted && (
+        <div>
+        <button>Log in</button>
+        <button onClick={() => setShowStaffRequests(true)}>Get Started</button>
+        </div>
+        )}
           </header>
           {showStaffRequests && (
             <main> 
