@@ -28,16 +28,30 @@ function App() {
   const [showLogo, setShowLogo] = useState(false);
   const [showIntroduction, setShowIntroduction] = useState(false);
   const [showStaffRequests, setShowStaffRequests] = useState(false);
-  const [showGetStarted, setShowGetStarted] = useState(false);
+  //const [showGetStarted, setShowGetStarted] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [name, setName] = useState("");
 
   const handleStreamClick = () => {
     setShowLogo(true);
     setShowIntroduction(true);
-    setShowGetStarted(true);
+    setLoggedIn(true);
   };
 
   const handleGetStartedClick = () => {
     setShowStaffRequests(true);
+  };
+
+  const handleLoginClick = () => {
+    setLoggedIn(true);
+  };
+
+  const handleLogoutClick = () => {
+    setLoggedIn(false);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   return (
@@ -52,12 +66,13 @@ function App() {
         <h2 id="introduction">Work Flows</h2>
       )}
       <p>Stream is a platform that allows you to manage your staff requests</p>
-      {showGetStarted && (
-        <div>
-        <button>Log in</button>
-        <button onClick={() => setShowStaffRequests(true)}>Get Started</button>
-        </div>
-        )}
+      <button onClick={handleLoginClick}>Login</button>
+       {loggedIn && (
+          <div>
+            <input type="text" placeholder="Enter your name" value={name} onChange={handleNameChange} />
+            <button onClick={handleGetStartedClick}>Continue</button>
+          </div>
+          )}
           </header>
           {showStaffRequests && (
             <main> 
